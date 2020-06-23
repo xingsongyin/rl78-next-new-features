@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="debug_storage" name="Debug storage" label="Debug storage" type="process" image="Icons/debug_ram.png" category="debug">
+	<Property>
+		<Group id="grpArrayName" name="RAMの格納先">
+			<Option id="lblArray" controlType="Label_TextBox" name="Array: ">
+				<DynamicItem id="defaultArray" defaultInput="dbg_buffer"/>
+			</Option>
+		</Group>
+		<Group id="grpAddArg" name="格納する変数">
+			<Option id="grpTable" controlType="Table" dataId="dataElement"/>
+		</Group>
+		<Data id="dataElement" columnNames="Num_Name" columnWidths="45_100" tableHeight="150">
+			<Option id="dataType" orderName="arg[#index]" controlType="Label_Combox"/>
+		</Data>
+	</Property>
+</Block>

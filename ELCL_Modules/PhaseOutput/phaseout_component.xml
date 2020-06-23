@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<component description="This module do the Logic LELC configuration to provide the phase output function" display="Phase output" id="phaseout" name="PhaseOutput" function="drivers.elcl" version="1.0.0" readme="Phase out.pdf" codeTemplate="phaseout/code"/>
+	<!-- input1 -->
+	<option defaultSelection="P01" defaultEnabled="true" id="input1Combox" name="input1" type="UPEI" regNum="5" tooltip="This selection clock is uneffectvie in clocks tool">
+		<item type="static" id="fIHP" name="fIHP clock">
+			<condition formula="clock_fIHP"/>
+		</item>
+		<item type="static" id="P01" name="Input signal1 - Port P01"/>
+		<item type="static" id="P10" name="Input signal1 - Port P10"/>
+		<item type="static" id="P11" name="Input signal1 - Port P11"/>
+		<item type="static" id="P12" name="Input signal1 - Port P12"/>
+		<item type="static" id="P31" name="Input signal1 - Port P31"/>
+		<item type="static" id="P50" name="Input signal1 - Port P50"/>
+		<item type="static" id="P51" name="Input signal1 - Port P51"/>
+		<item type="static" id="P137" name="Input signal1 - Port P137"/>
+	</option>
+	<!-- input2 -->
+	<option defaultSelection="P10" defaultEnabled="true" id="input2Combox" name="input2" type="UPEI" regNum="6" tooltip="This selection item has been selected in other Options">
+		<item type="static" id="P10" name="Input signal2 - Port P10">
+			<condition formula="(GroupOfOption(#input1Combox) == '0')"/>
+		</item>
+		<item type="static" id="P01" name="Input signal2 - Port P01">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P01')"/>
+		</item>
+		<item type="static" id="P11" name="Input signal2 - Port P11">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P11')"/>
+		</item>
+		<item type="static" id="P12" name="Input signal2 - Port P12">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P12')"/>
+		</item>
+		<item type="static" id="P50" name="Input signal2 - Port P50">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P50')"/>
+		</item>
+		<item type="static" id="P51" name="Input signal2 - Port P51">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P51')"/>
+		</item>
+		<item type="static" id="P137" name="Input signal2 - Port P137">
+			<condition formula="(ValueOfOption(#input1Combox) == 'P137')"/>
+		</item>
+		<item type="static" id="TAU0_INTTM00" name="Input signal2 - Interrupt TAU0_INTTM00"/>
+	</option>
+	<!-- output -->
+	<option defaultSelection="TAU00_INPUT" defaultEnabled="true" id="outputCombox" name="output" type="UPEO" regNum="0">
+		<item type="static" id="TAU00_INPUT" name="TAU0: Channel 0" group="3"/>
+		<item type="static" id="TAU01_INPUT" name="TAU0: Channel 1" group="4"/>
+		<item type="static" id="TAU05_INPUT" name="TAU0: Channel 5" group="6"/>
+	</option>
+	<!-- logic -->
+	<option defaultSelection="L1" defaultEnabled="true" id="logicBlockCombox" name="logic">
+		<item type="static" id="L1" name="Logic block 1">
+			<code key="UPEB">    ELL1SEL0=0x06U;
+    ELL1SEL1=0x07U;
+    ELL1SEL2=0x06U;
+    ELL1SEL5=0x06U;
+    ELL1SEL6=0x01U;
+    ELL1LNK0=0x01U;
+    ELL1LNK1=0x02U;
+    ELL1LNK2=0x02U;
+    ELL1LNK5=0x08U;
+    ELL1LNK6=0x02U;
+    ELL1CTL=0x83U;
+    p_osel0=0x01U;
+    p_osel1=0x05U;</code>
+		</item>
+		<item type="static" id="L2" name="Logic block 2">
+			<code key="UPEB">    ELL2SEL0=0x06U;
+    ELL2SEL1=0x07U;
+    ELL2SEL2=0x06U;
+    ELL2SEL5=0x06U;
+    ELL2SEL6=0x01U;
+    ELL2LNK0=0x01U;
+    ELL2LNK1=0x02U;
+    ELL2LNK2=0x02U;
+    ELL2LNK5=0x01U;
+    ELL2LNK6=0x02U;
+    ELL2CTL=0x83U;
+    p_osel0=0x06U;
+    p_osel1=0x0AU;</code>
+		</item>
+		<item type="static" id="L3" name="Logic block3">
+			<code key="UPEB">    ELL3SEL0=0x06U;
+    ELL3SEL1=0x07U;
+    ELL3SEL2=0x06U;
+    ELL3SEL5=0x06U;
+    ELL3SEL6=0x01U;
+    ELL3LNK0=0x01U;
+    ELL3LNK1=0x02U;
+    ELL3LNK2=0x02U;
+    ELL3LNK5=0x01U;
+    ELL3LNK6=0x02U;
+    ELL3CTL=0x83U;
+    p_osel0=0x0BU;
+    p_osel1=0x0FU;</code>
+		</item>
+	</option>
+	<!-- Interrupt binding -->
+	<binding id="TAU0_INTTM00" type="interrupt" key="TAU0_INTTM00">
+		<condition formula="(ValueOfOption(#input2Combox) == 'TAU0_INTTM00')"/>
+	</binding>
+	<!-- Pin binding -->
+	<binding id="P01" type="pin" key="EI01">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P01')"/>
+	</binding>
+	<binding id="P11" type="pin" key="EI11">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P11')"/>
+	</binding>
+	<binding id="P12" type="pin" key="EI12">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P12')"/>
+	</binding>
+	<binding id="P31" type="pin" key="EI31">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P31')"/>
+	</binding>
+	<binding id="P50" type="pin" key="EI50">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P50')"/>
+	</binding>
+	<binding id="P51" type="pin" key="EI51">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P51')"/>
+	</binding>
+	<binding id="P137" type="pin" key="EI137">
+		<condition formula="(ValueOfOption(#input1Combox) == 'P137')"/>
+	</binding>
+</settings>

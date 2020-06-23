@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="csiSendRecive" name="CSI マスタ送受信" label="Send" type="process" image="Icons/Operate.png" category="csiOperation" channelId="spiResource">
+	<Template>
+		<GRRequesters>
+			<Requester key="receive_data" type="var" value="[#variableDes]"/>
+			<Requester key="const_0xff" type="const" value="255"/>
+			<Requester key="SIOp" type="reg" value="SIO[#p]"/>
+			<Requester key="IFxx_CSIIFp" type="regBit" value="IF[#xx]_CSIIF[#p]"/>
+			<Requester key="temp" type="temp"/>
+		</GRRequesters>
+		CLR1 ${IFxx_CSIIFp};
+		MOV ${SIOp}, ${const_0xff};
+		WHILE0 ${IFxx_CSIIFp};
+		CLR1 ${IFxx_CSIIFp};
+		MOV ${temp}, ${SIOp};
+		MOV ${receive_data}, ${temp};
+	</Template>
+	<Property>
+		<Group id="grpSPIStart" columnCount="2">
+			<Option id="spiResource" name="Specify channel" deviceInfo="CSI" controlType="Label_Combox"/>
+		</Group>
+		<Group id="grpSPIMasterReceive" name="Received data" columnCount="2">
+			<Option id="variableDes" name="Variable" dataSource="dataType.variable" controlType="Label_Combox"/>
+		</Group>
+	</Property>
+</Block>

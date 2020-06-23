@@ -1,0 +1,93 @@
+<CommonData>
+<Item id="P00" name="P00/TI00" supportRegNum="4" type="UPEI">
+   <code>
+    PMCA0&amp;=0xFEU;
+    PM0|=0x01U;
+    ELISEL4=0x16U;
+   </code>
+</Item>
+<Item id="P01" name="P01" supportRegNum="5" type="UPEI">
+   <code>
+    PMCA0&amp;=0xFEU;
+    PM0|=0x01U;
+    ELISEL4=0x16U;
+   </code>
+</Item>
+<Item id="P10" name="P10/SCK00/SCL00" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM1|=0x01U;
+    ELISEL#n=0x0FU;
+   </code>
+</Item>
+<Item id="P11" name="P11/SI00/RXD0" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM1|=0x02U;
+    ELISEL#n=0x04U;
+   </code>
+</Item>
+<Item id="P12" name="P12" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM1|=0x04U;
+    ELISEL#n=0x14U;
+   </code>
+</Item>
+<Item id="P20" name="P20" supportRegNum="0" type="UPEI">
+   <code>
+    PMCA2&amp;=0xFEU;
+    PM2|=0x01U;
+    ELISEL0=0x15U;
+   </code>
+</Item>
+<Item id="P21" name="P21" supportRegNum="1" type="UPEI">
+   <code>
+    PMCA2&amp;=0xFDU;
+    PM2|=0x02U;
+    ELISEL1=0x15U;
+   </code>
+</Item>
+<Item id="P31" name="P31/INTP4" supportRegNum="5" type="UPEI">
+   <code>
+    PM3|=0x02U;
+    ELISEL5=0x15U;
+   </code>
+</Item>
+<Item id="P50" name="P50/INTP1" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM5|=0x01U;
+    ELISEL#n=0x05U;
+   </code>
+</Item>
+<Item id="P51" name="P51/INTP2" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM5|=0x02U;
+    ELISEL#n=0x10U;
+   </code>
+</Item>
+<Item id="P137" name="P137/INTP0" supportRegNum="0-11" type="UPEI">
+   <code>
+    PM13|=0x80U;
+    ELISEL#n=0x1BU;
+   </code>
+</Item>
+<Item id="TAU00_INPUT" name="TAUD00_INPUT" type="UPEO">
+   <code>
+    TIS1|=0x01U;
+    ELOSEL3=p_osel#n;
+    ELOENCTL|=0x08U;
+   </code>
+</Item>
+<Item id="TAU01_INPUT" name="TAUD01_INPUT"  type="UPEO">
+   <code>
+    TIS1|=0x02U;
+    ELOSEL4=p_osel#n;
+    ELOENCTL|=0x10U;
+   </code>
+</Item>
+<Item id="TAU05_INPUT" name="TAUD05_INPUT"  type="UPEO">
+   <code>
+    TIS0=(TIS0&amp;0xF8U)|0x01U;
+    ELOSEL6=p_osel#n;
+    ELOENCTL|=0x40U;
+   </code>
+</Item>
+</CommonData>

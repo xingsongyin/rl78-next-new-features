@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="4ByteCalculation" name="4Byte Calculation" label="4Byte Calculation" type="process" image="Icons/Operation.png" category="arithmetic">
+	<Property>
+		<Group id="grpSource" name="Target value" columnCount="2">
+			<Option id="arraySource" name="Array" dataSource="dataType.array" controlType="Label_Combox"/>
+		</Group>
+		<Group id="grpUpdate" name="Update value" columnCount="2">
+			<Option id="fixedValueUpdate" name="Fixed value" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="fixedValueUpdateText" name="Fixed value" defaultSelection="fixedValueItem" enable="fixedValueUpdate.checked" controlType="TextBox">
+				<DynamicItem id="fixedValueItem" name="Compare value" defaultInput="1" defaultValue="1" calculatorType="normal" range="1_65535"/>
+			</Option>
+			<Option id="arrayUpdate" name="Array" defaultSelection="unchecked" controlType="RadioButton"/>
+			<Option id="arrayUpdateItems" dataSource="dataType.array" enable="arrayUpdate.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpUpdateMode" name="Calculation formula" columnCount="2">
+			<Option id="add" name="+(plus)" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="subtraction" name="-(minus)" defaultSelection="unchecked" controlType="RadioButton"/>
+		</Group>
+	</Property>
+</Block>

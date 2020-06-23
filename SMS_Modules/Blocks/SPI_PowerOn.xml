@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--SMS block for SPI operation start.-->
+<Block id="SPIPowerOn" name="CSI power on" label="Power On" type="process" image="Icons/Operation.png" category="spiOperation" channelId="spiResource">
+	<Template>
+		<GRRequesters>
+			<Requester key="SSm_SSmn" type="regBit" value="SS[#m]_SS[#m][#n]"/>
+		</GRRequesters>SET1 ${SSm_SSmn};</Template>
+	<Property>
+		<Group id="grpSPIStart" columnCount="2">
+			<Option id="spiResource" name="Specify channel" deviceInfo="CSI" controlType="Label_Combox"/>
+		</Group>
+	</Property>
+</Block>

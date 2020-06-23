@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="SPIStop" name="CSI end" label="End" type="process" image="Icons/Operation.png" category="spiOperation" channelId="spiResource">
+	<Template>
+		<GRRequesters>
+			<Requester key="STm_STmn" type="regBit" value="ST[#m]_ST[#m][#n]"/>
+		</GRRequesters>
+		SET1 ${STm_STmn};
+	</Template>
+	<Property>
+		<Group id="grpSPIStop" columnCount="2">
+			<Option id="spiResource" name="Specify channel" deviceInfo="CSI" controlType="Label_Combox"/>
+		</Group>
+	</Property>
+</Block>

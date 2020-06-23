@@ -1,0 +1,7 @@
+${UPEI5}
+${UPEI6}
+${UPEB}
+    ELOSEL0=p_osel1
+    ELOENCTL|=0x01U
+${UPEO1}
+

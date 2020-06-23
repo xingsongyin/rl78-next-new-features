@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="1bitSet" name="1Bit Set" label="1Bit Set" type="process" image="Icons/Operation.png" category="arithmetic">
+	<Property>
+		<Group id="grpSource" name="1bit設定" columnCount="2">
+			<Option id="setTarget" name="設定対象" dataSource="dataType.variable" controlType="Label_Combox"/>
+			<Option id="bitPosition" name="Bit position" controlType="Label_Combox" defaultSelection="bit0">
+				<StaticItem id="bit0" name="0"/>
+				<StaticItem id="bit1" name="1"/>
+				<StaticItem id="bit2" name="2"/>
+				<StaticItem id="bit3" name="3"/>
+				<StaticItem id="bit4" name="4"/>
+				<StaticItem id="bit5" name="5"/>
+				<StaticItem id="bit6" name="6"/>
+				<StaticItem id="bit7" name="7"/>
+			</Option>
+			<Option id="bitValue" name="設定値" controlType="Label_Combox" defaultSelection="Set">
+				<StaticItem id="Set" name="1"/>
+				<StaticItem id="Clear" name="0"/>
+			</Option>
+		</Group>
+	</Property>
+</Block>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sequence device="RL78G23" type="Category 1" function="Function 1" name="[A01] 超音波TDC流量計" version="1.0.0">
+	<description><![CDATA[
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>This is a test description 1.<a href="www.baidu.com"> BaiDu </a></p>
+	</body>
+</html>
+]]></description>
+	<diagram blockFileId="diagram" id="2bee0f32-19e9-48a7-aa1b-7f6493fa4168">
+		<general>
+			<option id="startTrigger" name="Interval timer1" selection="trigger0"/>
+			<option id="generalRegStatus" name="" selection="generalRegStatusItem"/>
+			<option id="instructionStatus" name="" selection="instructionStatusItem"/>
+			<option id="ramStatus" name="" selection="ramStatusItem"/>
+		</general>
+		<blocks>
+			<block blockFileId="start" id="b5c01d55-dcd0-4985-b251-46fea9faa6bc" type="start">
+				<settingGrp id="grpAddArg">
+					<option id="grpTable" name=""/>
+				</settingGrp>
+			</block>
+			<block blockFileId="SPIStart" id="620b4543-f134-4590-8d6b-a20a6ab80285" type="process">
+				<settingGrp id="grpSPIStart">
+					<option id="spiResource" name="CSI20" selection="CSI20"/>
+				</settingGrp>
+			</block>
+			<block blockFileId="compareBranch" id="04cf092a-3b83-4870-b692-4b2e40f3f1f4" type="condition">
+				<block blockFileId="compareBranch" id="2c1b0226-67b6-402f-816e-a82c08e6e7e0" type="header">
+					<settingGrp id="grpSource">
+						<option id="variableSource" name="" selection="checked"/>
+						<option id="variableSourceItems" name="var2" selection="dataElement2502"/>
+					</settingGrp>
+					<settingGrp id="grpDestination">
+						<option id="fixedValueDes" name="" selection="checked"/>
+						<option id="fixedValueDesText" input="1" name="Fixed value" selection="fixedValueItem"/>
+						<option id="variableDes" name="" selection="unchecked"/>
+						<option id="variableDesItems" name=""/>
+					</settingGrp>
+					<settingGrp id="grpCompareCondition">
+						<option id="compareConditon" name="&gt;=" selection="greaterEqual"/>
+					</settingGrp>
+				</block>
+				<branch type="noBranch">
+					<block blockFileId="SPIMasterReceive" id="8bded82f-3176-4512-9a74-6adcf1305126" type="process">
+						<settingGrp id="grpSPIStart">
+							<option id="spiResource" name="CSI00" selection="CSI00"/>
+						</settingGrp>
+						<settingGrp id="grpSPIMasterReceive">
+							<option id="variableDes" name="var1" selection="dataElement4306"/>
+						</settingGrp>
+					</block>
+				</branch>
+				<branch type="yesBranch">
+					<block blockFileId="loop" id="0db98ffc-fc1a-428f-a5ee-730ffa0e6586" type="loop">
+						<block blockFileId="loop" id="74ed66ff-9c33-4eea-b4a7-17a6ba499adc" type="special">
+							<settingGrp id="grpSource">
+								<option id="variableSource" name="" selection="checked"/>
+								<option id="variableSourceItems" name="arr_index_start" selection="dataElement9424_2581"/>
+							</settingGrp>
+							<settingGrp id="grpUpdate">
+								<option id="fixedValueUpdate" name="" selection="checked"/>
+								<option id="fixedValueUpdateText" input="1" name="Fixed value" selection="fixedValueItem"/>
+								<option id="variableUpdate" name="" selection="unchecked"/>
+								<option id="variableUpdateItems" name=""/>
+							</settingGrp>
+							<settingGrp id="grpUpdateMode">
+								<option id="add" name="" selection="checked"/>
+								<option id="subtraction" name="" selection="unchecked"/>
+							</settingGrp>
+							<settingGrp id="grpDestination">
+								<option id="fixedValueDes" name="" selection="checked"/>
+								<option id="fixedValueDesText" input="1" name="Fixed value" selection="fixedValueItem"/>
+								<option id="variableDes" name="" selection="unchecked"/>
+								<option id="variableDesItems" name=""/>
+							</settingGrp>
+							<settingGrp id="grpCompareCondition">
+								<option id="compareConditon" name="&gt;=" selection="greaterEqual"/>
+							</settingGrp>
+						</block>
+						<branch type="doBranch"/>
+						<branch type="noBranch">
+							<block blockFileId="SPIMasterReceive" id="b8e5675d-dd29-42a3-976d-0293c179558f" type="process">
+								<settingGrp id="grpSPIStart">
+									<option id="spiResource" name="CSI01" selection="CSI01"/>
+								</settingGrp>
+								<settingGrp id="grpSPIMasterReceive">
+									<option id="variableDes" name="arr_start" selection="dataElement9424_4148"/>
+								</settingGrp>
+							</block>
+						</branch>
+						<branch type="yesBranch">
+							<block blockFileId="SPIStop" id="29cd40e9-7dfc-46de-a657-372e0c283316" type="process">
+								<settingGrp id="grpSPIStop">
+									<option id="spiResource" name="CSI00" selection="CSI00"/>
+								</settingGrp>
+							</block>
+						</branch>
+					</block>
+				</branch>
+			</block>
+			<block blockFileId="end" id="8f2fdf08-414a-472d-bfa6-d811ac55810b" type="end">
+				<settingGrp id="grpFunction">
+					<option id="endFunction" name="Finish" selection="finish"/>
+				</settingGrp>
+				<settingGrp id="grpAddReturn">
+					<option id="grpTable" name=""/>
+				</settingGrp>
+			</block>
+		</blocks>
+		<dataManager>
+			<table dataId="dataElement" id="dataManagerTable" tableOptId="dataManagerTable">
+				<tableData id="dataElement4306">
+					<option id="dataType" name="Variable" selection="variable"/>
+					<option id="dataName" input="var1" name="" selection="dataNameItem"/>
+					<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+					<option id="initialMode" name="No initialization" selection="noInit"/>
+					<option id="initialValue" input="0" name="" selection="initialValueItem"/>
+				</tableData>
+				<tableData id="dataElement2502">
+					<option id="dataType" name="Variable" selection="variable"/>
+					<option id="dataName" input="var2" name="" selection="dataNameItem"/>
+					<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+					<option id="initialMode" name="No initialization" selection="noInit"/>
+					<option id="initialValue" input="0" name="" selection="initialValueItem"/>
+				</tableData>
+				<tableData id="dataElement9424">
+					<tableData id="dataElement9424_4148" type="arrayStart">
+						<option id="dataType" name="Variable" selection="variable"/>
+						<option id="dataName" input="arr_start" name="" selection="dataNameItem"/>
+						<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+						<option id="initialMode" name="No initialization" selection="noInit"/>
+						<option id="initialValue" input="&amp;arr" name="" selection="initialValueItem"/>
+					</tableData>
+					<tableData id="dataElement9424_6478" type="arrayEnd">
+						<option id="dataType" name="Variable" selection="variable"/>
+						<option id="dataName" input="arr_end" name="" selection="dataNameItem"/>
+						<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+						<option id="initialMode" name="No initialization" selection="noInit"/>
+						<option id="initialValue" input="&amp;arr+1" name="" selection="initialValueItem"/>
+					</tableData>
+					<tableData id="dataElement9424_2581" type="arrayIndexStart">
+						<option id="dataType" name="Variable" selection="variable"/>
+						<option id="dataName" input="arr_index_start" name="" selection="dataNameItem"/>
+						<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+						<option id="initialMode" name="No initialization" selection="noInit"/>
+						<option id="initialValue" input="&amp;arr" name="" selection="initialValueItem"/>
+					</tableData>
+					<tableData id="dataElement9424_4052" type="arrayIndexEnd">
+						<option id="dataType" name="Variable" selection="variable"/>
+						<option id="dataName" input="arr_index_end" name="" selection="dataNameItem"/>
+						<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+						<option id="initialMode" name="No initialization" selection="noInit"/>
+						<option id="initialValue" input="&amp;arr+1" name="" selection="initialValueItem"/>
+					</tableData>
+					<option id="dataType" name="Array" selection="array"/>
+					<option id="dataName" input="arr" name="" selection="dataNameItem"/>
+					<option id="dataSize" input="2" name="" selection="dataSizeItem"/>
+					<option id="initialMode" name="No initialization" selection="noInit"/>
+					<option id="initialValue" input="0" name="" selection="initialValueItem"/>
+				</tableData>
+			</table>
+		</dataManager>
+	</diagram>
+	<model blockIds="SPIMasterReceive,compareBranch,loop,start,end,SPIStart,SPIStop" id="com.renesas.smc.tools.swcomponent.sms.model">
+		<context/>
+	</model>
+</sequence>

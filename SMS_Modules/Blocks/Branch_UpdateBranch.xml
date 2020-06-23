@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="loop" name="Update&amp;Branch" label="Condition" type="loop" image="Icons/Icon_Loop.png" category="branch">
+	<Template>
+		<GRRequesters>
+			<Requester key="source" type="var" value="[#variableSourceItems][#addressSourceItems]"/>
+			<Requester key="update" type="var" value="[#variableUpdateItems]"/>
+			<Requester key="update" type="const" value="[#fixedValueUpdateText]"/>
+			<Requester key="target" type="var" value="[#variableDesItems][#addressDesItems]"/>
+			<Requester key="target" type="const" value="[#fixedValueDesText]"/>
+		</GRRequesters>
+		[#if add == "checked"]
+			ADDW ${source}, ${update};
+		[#elseif subtraction == "checked"/]
+			SUBW ${source}, ${update};
+		[/#if]
+			CMPW ${source}, ${target};
+		[#if compareConditon == "greaterEqual"]
+			BC
+		[#elseif compareConditon == "lessEqual"/]
+			BNC
+		[/#if]
+		</Template>
+	<Property>
+		<Group id="grpSource" name="Source" columnCount="2">
+			<Option id="variableSource" name="Variable" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="variableSourceItems" dataSource="dataType.variable" enable="variableSource.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpUpdate" name="Update value" columnCount="2">
+			<Option id="fixedValueUpdate" name="Fixed value" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="fixedValueUpdateText" name="Fixed value" defaultSelection="fixedValueItem" enable="fixedValueUpdate.checked" controlType="TextBox">
+				<DynamicItem id="fixedValueItem" name="Fixed value" defaultInput="1" defaultValue="1" calculatorType="normal" range="1_65535"/>
+			</Option>
+			<Option id="variableUpdate" name="Variable" defaultSelection="unchecked" controlType="RadioButton"/>
+			<Option id="variableUpdateItems" dataSource="dataType.variable" enable="variableUpdate.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpUpdateMode" name="Update mode" columnCount="2">
+			<Option id="add" name="+(plus)" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="subtraction" name="-(minus)" defaultSelection="unchecked" controlType="RadioButton"/>
+		</Group>
+		<Group id="grpDestination" name="Destination" columnCount="2">
+			<Option id="fixedValueDes" name="Fixed value" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="fixedValueDesText" name="Fixed value" defaultSelection="fixedValueItem" enable="fixedValueDes.checked" controlType="TextBox">
+				<DynamicItem id="fixedValueItem" name="Compare value" defaultInput="1" defaultValue="1" calculatorType="normal" range="1_65535"/>
+			</Option>
+			<Option id="variableDes" name="Variable" defaultSelection="unchecked" controlType="RadioButton"/>
+			<Option id="variableDesItems" dataSource="dataType.variable" enable="variableDes.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpCompareCondition" name="Compare condition" columnCount="2">
+			<Option id="compareConditon" name="Condition" defaultSelection="greaterEqual" controlType="Label_Combox">
+				<StaticItem id="greaterEqual" name="&gt;="/>
+				<StaticItem id="lessEqual" name="&lt;="/>
+			</Option>
+		</Group>
+	</Property>
+</Block>

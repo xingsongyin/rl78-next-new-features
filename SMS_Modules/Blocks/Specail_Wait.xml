@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="wait" name="Wait" label="Wait" type="process" image="Icons/wait.png" category="special">
+	<Template>
+		<GRRequesters>
+			<Requester key="IM1" type="const" value="[#waitTime_Value1]"/>
+			<Requester key="IM2" type="const" value="[#waitTime_Value2]"/>
+		</GRRequesters>
+			WAIT ${IM1}, ${IM2};
+	</Template>
+	<Property>
+		<Group id="grpWaitSetting" name="Wait setting" columnCount="2">
+			<Option id="countSource" name="Count source" defaultSelection="fMAIN" controlType="Label_Combox" columnSpan="1_1">
+				<StaticItem id="fMAIN" name="fMAIN"/>
+				<StaticItem id="fIL" name="fIL"/>
+			</Option>
+			<Option id="unit" name="Time unit" defaultSelection="us" controlType="Label_Combox">
+				<StaticItem id="us" name="us"/>
+				<StaticItem id="ms" name="ms"/>
+				<StaticItem id="ns" name="ns"/>
+			</Option>
+			<Option id="waitTime" name="Wait time" defaultSelection="waitTimeItem" controlType="Label_TextBox_LabelActual" columnSpan="1_1_2">
+				<DynamicItem id="waitTimeItem" name="Wait time" defaultInput="1" defaultValue="1" calculatorType="clockValue" regCountRange="1_128" clockDivisionRange="1_128" unitId="unit" socketKey="fCLK_Socket,fIL_Socket"/>
+			</Option>
+		</Group>
+		<InputSocket defaultValue="32000000" key="fCLK_Socket" name="fCLK clock" enable="countSource.fMAIN" valueType="Double" dependenceKey="fCLK"/>
+		<InputSocket defaultValue="32768" key="fIL_Socket" name="fIL clock" enable="countSource.fIL" valueType="Double" dependenceKey="fIL"/>
+	</Property>
+</Block>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeviceInfo>
+	<Triggers>
+		<Trigger id="INTITL" name="Interval detection interrupt (INTITL)"/>
+		<Trigger id="INTP3" name="Pin input edge detection interrupt (INTP3)"/>
+		<Trigger id="INTSR0" name="UART0 reception transfer end interrupt (INTSR0)"/>
+		<Trigger id="INTCSI00" name="CSI00 transfer end interrupt (INTCSI00)"/>
+		<Trigger id="INTAD" name="A/D conversion end interrupt (INTAD)"/>
+		<Trigger id="ELCL" name="ELCL output signal"/>
+		<Trigger id="INTUR0" name="UARTA0 reception transfer end interrupt (INTUR0)" pinCount="36,40,44,48,52,64,80,100,128"/>
+		<Trigger id="INTTM02" name="Timer channel 02 count or capture end interrupt (INTTM02)"/>
+		<Trigger id="INTIICA0" name="IICA0 communication end interrupt (INTIICA0)"/>
+		<Trigger id="INTLVI" name="Voltage detection interrupt (INTLVI)"/>
+		<Trigger id="INTKR" name="Key return signal detection interrupt (INTKR)" pinCount="40,44,48,52,64,80,100,128"/>
+	</Triggers>
+	<Port>
+		<Page id="P0" name="P0">
+			<Channel items="0-6"/>
+			<Channel items="7-9"/>
+			<Channel items="10-15"/>
+		</Page>
+		<Page id="P1" name="P1">
+			<Channel items="0-7"/>
+		</Page>
+		<Page id="P2" name="P2">
+			<Channel items="0-7"/>
+		</Page>
+		<Page id="P3" name="P3">
+			<Channel items="0-1"/>
+		</Page>
+		<Page id="P4" name="P4">
+			<Channel items="0-3"/>
+		</Page>
+		<Page id="P5" name="P5">
+			<Channel items="0-5"/>
+		</Page>
+		<Page id="P6" name="P6">
+			<Channel items="0-3"/>
+		</Page>
+		<Page id="P7" name="P7">
+			<Channel items="0-7"/>
+		</Page>
+		<Page id="P12" name="P12">
+			<Channel items="0-4"/>
+		</Page>
+		<Page id="P13" name="P13">
+			<Channel items="0,7"/>
+		</Page>
+		<Page id="P14" name="P14">
+			<Channel items="0,1,6,7"/>
+		</Page>
+	</Port>
+	<PeripheralFuns>
+		<PeripheralFun id="CSI">
+			<Channel id="CSI00" name="CSI00" repl_m="0" repl_n="0" repl_p="00" repl_xx="0H"/>
+			<Channel id="CSI01" name="CSI01" repl_m="0" repl_n="1" repl_p="01" repl_xx="1L" pinCount="48,52,64,80,100,128"/>
+			<Channel id="CSI10" name="CSI10" repl_m="0" repl_n="2" repl_p="10" repl_xx="1L" pinCount="64,80,100,128"/>
+			<Channel id="CSI11" name="CSI11" repl_m="0" repl_n="3" repl_p="11" repl_xx="1L"/>
+			<Channel id="CSI20" name="CSI20" repl_m="1" repl_n="0" repl_p="20" repl_xx="0H"/>
+			<Channel id="CSI21" name="CSI21" repl_m="1" repl_n="1" repl_p="21" repl_xx="0H" pinCount="36,40,44,48,52,64,80,100,128"/>
+			<Channel id="CSI30" name="CSI30" repl_m="1" repl_n="2" repl_p="30" repl_xx="1H" pinCount="80,100,128"/>
+			<Channel id="CSI31" name="CSI31" repl_m="1" repl_n="3" repl_p="31" repl_xx="1H" pinCount="80,100,128"/>
+		</PeripheralFun>
+	</PeripheralFuns>
+	<Registers>
+		<Register name="P0" address="0xFFF00">
+			<Bit name="P00" num="0"/>
+			<Bit name="P01" num="1"/>
+			<Bit name="P02" num="2"/>
+			<Bit name="P03" num="3"/>
+			<Bit name="P04" num="4"/>
+			<Bit name="P05" num="5"/>
+			<Bit name="P06" num="6"/>
+		</Register>
+		<Register name="P1" address="0xFFF01">
+			<Bit name="P10" num="0"/>
+			<Bit name="P11" num="1"/>
+			<Bit name="P12" num="2"/>
+			<Bit name="P13" num="3"/>
+			<Bit name="P14" num="4"/>
+			<Bit name="P15" num="5"/>
+			<Bit name="P16" num="6"/>
+			<Bit name="P17" num="7"/>
+		</Register>
+		<Register name="P2" address="0xFFF02">
+			<Bit name="P20" num="0"/>
+			<Bit name="P21" num="1"/>
+			<Bit name="P22" num="2"/>
+			<Bit name="P23" num="3"/>
+			<Bit name="P24" num="4"/>
+			<Bit name="P25" num="5"/>
+			<Bit name="P26" num="6"/>
+			<Bit name="P27" num="7"/>
+		</Register>
+		<Register name="P3" address="0xFFF03">
+			<Bit name="P30" num="0"/>
+			<Bit name="P31" num="1"/>
+		</Register>
+		<Register name="P4" address="0xFFF04">
+			<Bit name="P40" num="0"/>
+			<Bit name="P41" num="1"/>
+			<Bit name="P42" num="2"/>
+			<Bit name="P43" num="3"/>
+		</Register>
+		<Register name="P5" address="0xFFF05">
+			<Bit name="P50" num="0"/>
+			<Bit name="P51" num="1"/>
+			<Bit name="P52" num="2"/>
+			<Bit name="P53" num="3"/>
+			<Bit name="P54" num="4"/>
+			<Bit name="P55" num="5"/>
+		</Register>
+		<Register name="P6" address="0xFFF06">
+			<Bit name="P60" num="0"/>
+			<Bit name="P61" num="1"/>
+			<Bit name="P62" num="2"/>
+			<Bit name="P63" num="3"/>
+		</Register>
+		<Register name="P7" address="0xFFF07">
+			<Bit name="P70" num="0"/>
+			<Bit name="P71" num="1"/>
+			<Bit name="P72" num="2"/>
+			<Bit name="P73" num="3"/>
+			<Bit name="P74" num="4"/>
+			<Bit name="P75" num="5"/>
+			<Bit name="P76" num="6"/>
+			<Bit name="P77" num="7"/>
+		</Register>
+		<Register name="P12" address="0xFFF0C">
+			<Bit name="P120" num="0"/>
+			<Bit name="P121" num="1"/>
+			<Bit name="P122" num="2"/>
+			<Bit name="P123" num="3"/>
+			<Bit name="P124" num="4"/>
+		</Register>
+		<Register name="P13" address="0xFFF0D">
+			<Bit name="P130" num="0"/>
+			<Bit name="P137" num="7"/>
+		</Register>
+		<Register name="P14" address="0xFFF0E">
+			<Bit name="P140" num="0"/>
+			<Bit name="P141" num="1"/>
+			<Bit name="P146" num="6"/>
+			<Bit name="P147" num="7"/>
+		</Register>
+		<Register name="PM0" address="0xFFF00">
+			<Bit name="PM00" num="0"/>
+			<Bit name="PM01" num="1"/>
+			<Bit name="PM02" num="2"/>
+			<Bit name="PM03" num="3"/>
+			<Bit name="PM04" num="4"/>
+			<Bit name="PM05" num="5"/>
+			<Bit name="PM06" num="6"/>
+		</Register>
+		<Register name="PM1" address="0xFFF01">
+			<Bit name="PM10" num="0"/>
+			<Bit name="PM11" num="1"/>
+			<Bit name="PM12" num="2"/>
+			<Bit name="PM13" num="3"/>
+			<Bit name="PM14" num="4"/>
+			<Bit name="PM15" num="5"/>
+			<Bit name="PM16" num="6"/>
+			<Bit name="PM17" num="7"/>
+		</Register>
+		<Register name="PM2" address="0xFFF02">
+			<Bit name="PM20" num="0"/>
+			<Bit name="PM21" num="1"/>
+			<Bit name="PM22" num="2"/>
+			<Bit name="PM23" num="3"/>
+			<Bit name="PM24" num="4"/>
+			<Bit name="PM25" num="5"/>
+			<Bit name="PM26" num="6"/>
+			<Bit name="PM27" num="7"/>
+		</Register>
+		<Register name="PM3" address="0xFFF03">
+			<Bit name="PM30" num="0"/>
+			<Bit name="PM31" num="1"/>
+		</Register>
+		<Register name="PM4" address="0xFFF04">
+			<Bit name="PM40" num="0"/>
+			<Bit name="PM41" num="1"/>
+			<Bit name="PM42" num="2"/>
+			<Bit name="PM43" num="3"/>
+		</Register>
+		<Register name="PM5" address="0xFFF05">
+			<Bit name="PM50" num="0"/>
+			<Bit name="PM51" num="1"/>
+			<Bit name="PM52" num="2"/>
+			<Bit name="PM53" num="3"/>
+			<Bit name="PM54" num="4"/>
+			<Bit name="PM55" num="5"/>
+		</Register>
+		<Register name="PM6" address="0xFFF06">
+			<Bit name="PM60" num="0"/>
+			<Bit name="PM61" num="1"/>
+			<Bit name="PM62" num="2"/>
+			<Bit name="PM63" num="3"/>
+		</Register>
+		<Register name="PM7" address="0xFFF07">
+			<Bit name="PM70" num="0"/>
+			<Bit name="PM71" num="1"/>
+			<Bit name="PM72" num="2"/>
+			<Bit name="PM73" num="3"/>
+			<Bit name="PM74" num="4"/>
+			<Bit name="PM75" num="5"/>
+			<Bit name="PM76" num="6"/>
+			<Bit name="PM77" num="7"/>
+		</Register>
+		<Register name="PM12" address="0xFFF0C">
+			<Bit name="PM120" num="0"/>
+			<Bit name="PM121" num="1"/>
+			<Bit name="PM122" num="2"/>
+		</Register>
+		<Register name="PM14" address="0xFFF0E">
+			<Bit name="PM140" num="0"/>
+			<Bit name="PM141" num="1"/>
+			<Bit name="PM146" num="6"/>
+			<Bit name="PM147" num="7"/>
+		</Register>
+		<Register name="IF0H" address="0xFFFE1">
+			<Bit name="CSIIF20" num="0"/>
+			<Bit name="CSIIF21" num="1"/>
+			<Bit name="CSIIF00" num="5"/>
+		</Register>
+		<Register name="IF1L" address="0xFFFE2">
+			<Bit name="CSIIF10" num="0"/>
+			<Bit name="CSIIF11" num="1"/>
+			<Bit name="CSIIF01" num="3"/>
+		</Register>
+		<Register name="IF1H" address="0xFFFE3">
+			<Bit name="ADIF" num="0"/>
+			<Bit name="CSIIF30" num="4"/>
+			<Bit name="CSIIF31" num="5"/>
+		</Register>
+		<Register name="ADCRH" address="0xFFF1F"/>
+		<Register name="ADCR" address="0xFFF1E"/>
+		<Register name="ADM0" address="0xFFF30">
+			<Bit name="ADCE" num="0"/>
+			<Bit name="ADCS" num="7"/>
+		</Register>
+		<Register name="ADM2" address="0xF0010">
+			<Bit name="AWC" num="2"/>
+			<Bit name="ADREFP1" num="7"/>
+		</Register>
+		<Register name="ADS" address="0xFFF31">
+			<Bit name="ADISS" num="7"/>
+		</Register>
+		<Register name="PER0" address="0xF00F0">
+			<Bit name="SAU0EN" num="2"/>
+			<Bit name="SAU1EN" num="3"/>
+			<Bit name="ADCEN" num="5"/>
+		</Register>
+		<Register name="SIO00" address="0xFFF10"/>
+		<Register name="SIO01" address="0xFFF12"/>
+		<Register name="SIO10" address="0xFFF44"/>
+		<Register name="SIO11" address="0xFFF46"/>
+		<Register name="SIO20" address="0xFFF48"/>
+		<Register name="SIO21" address="0xFFF4A"/>
+		<Register name="SIO30" address="0xFFF14"/>
+		<Register name="SIO31" address="0xFFF16"/>
+		<Register name="SS0" address="0xF0122">
+			<Bit name="SS00" num="0"/>
+			<Bit name="SS01" num="1"/>
+			<Bit name="SS02" num="2"/>
+			<Bit name="SS03" num="3"/>
+		</Register>
+		<Register name="SS1" address="0xF0162">
+			<Bit name="SS10" num="0"/>
+			<Bit name="SS11" num="1"/>
+			<Bit name="SS12" num="2"/>
+			<Bit name="SS13" num="3"/>
+		</Register>
+		<Register name="ST0" address="0xF0124">
+			<Bit name="ST00" num="0"/>
+			<Bit name="ST01" num="1"/>
+			<Bit name="ST02" num="2"/>
+			<Bit name="ST03" num="3"/>
+		</Register>
+		<Register name="ST1" address="0xF0164">
+			<Bit name="ST10" num="0"/>
+			<Bit name="ST11" num="1"/>
+			<Bit name="ST12" num="2"/>
+			<Bit name="ST13" num="3"/>
+		</Register>
+	</Registers>
+</DeviceInfo>

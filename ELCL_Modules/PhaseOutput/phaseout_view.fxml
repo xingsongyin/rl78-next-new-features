@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<ScrollPane fx:id="scrollPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<content>
+		<Group>
+         <children>
+            <AnchorPane layoutX="671.0" layoutY="319.0" minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="896.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="306.0" layoutX="302.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="306.0" layoutX="84.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" width="210.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="306.0" layoutX="664.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
+                  <ComboBox id="input1Combox" blendMode="DARKEN" layoutX="98.0" layoutY="110.0" prefHeight="23.0" prefWidth="186.0" />
+                  <ImageView blendMode="DARKEN" fitHeight="200.0" fitWidth="400.0" layoutX="284.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@phaseout.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox id="logicBlockCombox" blendMode="DARKEN" layoutX="445.0" layoutY="334.0" prefHeight="23.0" prefWidth="198.0" />
+                  <ComboBox id="input2Combox" blendMode="DARKEN" layoutX="99.0" layoutY="264.0" prefHeight="23.0" prefWidth="186.0" />
+                  <TextField blendMode="DARKEN" editable="false" layoutX="676.0" layoutY="110.0" prefHeight="23.0" prefWidth="130.0" text="ELOMONI.bit0" />
+                  <ComboBox id="outputCombox" blendMode="DARKEN" layoutX="676.0" layoutY="251.0" prefWidth="150.0" />
+                  <TextField blendMode="DARKEN" editable="false" layoutX="99.0" layoutY="208.0" prefHeight="23.0" prefWidth="185.0" text="Reset" />
+                  <Label layoutX="99.0" layoutY="74.0" text="Input signal selector" textFill="#2521b8" />
+                  <Label layoutX="676.0" layoutY="74.0" text="Output signal selector" textFill="#2521b8" />
+                  <Label layoutX="331.0" layoutY="74.0" text="Event controller(link processor)" textFill="#2521b8" />
+                  <Label layoutX="325.0" layoutY="338.0" text="Logic block selection" textFill="#2521b8" />
+               </children>
+            </AnchorPane>
+         </children>
+		</Group>
+	</content>
+</ScrollPane>

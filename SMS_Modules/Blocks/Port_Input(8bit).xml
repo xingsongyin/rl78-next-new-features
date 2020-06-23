@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="portInput8bit" name="Port input(8bit)" label="Input(8bit)" type="condition" noBranchName="Low" yesBranchName="High" image="Icons/Icon_Condition.png" category="portOperation" channelId="portChannel">
+	<Property>
+		<Group id="grpPortIn" columnCount="2">
+			<Option id="portPage" name="Specify page" deviceInfo="portPage" controlType="Label_Combox"/>
+			<Option id="portChannel" name="Specify channel" deviceInfo="portChannel" controlType="Label_Combox"/>
+		</Group>
+	</Property>
+</Block>

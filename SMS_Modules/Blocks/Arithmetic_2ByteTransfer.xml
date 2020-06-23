@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="2byteTransfer" name="2Byte Transfer" label="2Byte Transfer" type="process" image="Icons/Operation.png" category="arithmetic">
+	<Property>
+		<Group id="grpSource" name="Transfer source" columnCount="2">
+			<Option id="fixSource" name="Fixed value" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="fixSourceText" name="Fixed value" defaultSelection="fixedValueItem" enable="fixSource.checked" controlType="TextBox">
+				<DynamicItem id="fixedValueItem" name="Fixed value" defaultInput="1" defaultValue="1" calculatorType="normal" range="1_65535"/>
+			</Option>
+			<Option id="varSource" name="Variable" defaultSelection="unchecked" controlType="RadioButton"/>
+			<Option id="varSourceItems" dataSource="dataType.variable" enable="varSource.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpTarget" name="Transfer target" columnCount="2">
+			<Option id="varTarget" name="Variable" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="varTargetItems" dataSource="dataType.variable" enable="varTarget.checked" controlType="Combox"/>
+		</Group>
+	</Property>
+</Block>

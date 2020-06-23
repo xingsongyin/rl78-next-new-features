@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="bitBranch" name="Bit branch" label="Condition" type="condition" image="/Icons/Icon_Condition.png" category="branch">
+	<Template>
+		<GRRequesters>
+			<Requester key="source" type="var" value="[#variableSourceItems][#addressSourceItems]"/>
+			<Requester key="target" type="var" value="[#variableDesItems][#addressDesItems]"/>
+			<Requester key="target" type="const" value="[#fixedValueDesText]"/>
+			<Requester key="temp1" type="temp"/>
+			<Requester key="temp2" type="temp"/>
+		</GRRequesters>
+			MOV ${temp1}, ${source};
+			MOV ${temp2}, ${target};
+			CMPW ${temp1}, ${temp2};
+		[#if compareConditon == "greaterEqual"]
+			BC
+		[#elseif compareConditon == "lessEqual"/]
+			BNC
+		[/#if]
+		</Template>
+	<Property>
+		<Group id="grpSource" name="Compare source" columnCount="2">
+			<Option id="variableSource" name="Variable" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="variableSourceItems" dataSource="dataType.variable" enable="variableSource.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpDestination" name="Compare target" columnCount="2">
+			<Option id="fixedValueDes" name="Fixed value" defaultSelection="checked" controlType="RadioButton"/>
+			<Option id="fixedValueDesText" name="Fixed value" defaultSelection="fixedValueItem" enable="fixedValueDes.checked" controlType="TextBox">
+				<DynamicItem id="fixedValueItem" name="Fixed value" defaultInput="1" defaultValue="1" calculatorType="normal" range="1_65535"/>
+			</Option>
+			<Option id="variableDes" name="Variable" defaultSelection="unchecked" controlType="RadioButton"/>
+			<Option id="variableDesItems" dataSource="dataType.variable" enable="variableDes.checked" controlType="Combox"/>
+		</Group>
+		<Group id="grpCompareCondition" name="Compare condition" columnCount="2">
+			<Option id="compareConditon" name="Condition" defaultSelection="greaterEqual" controlType="Label_Combox">
+				<StaticItem id="greaterEqual" name="&gt;="/>
+				<StaticItem id="lessEqual" name="&lt;="/>
+			</Option>
+		</Group>
+	</Property>
+</Block>

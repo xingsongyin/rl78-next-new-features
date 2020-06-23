@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- SMS tool block data file -->
+<Block id="portIosetting" name="Port I/O setting" label="I/O setting" type="process" image="Icons/Operation.png" category="portOperation" channelId="portChannel">
+	<Template>
+		SET1 ${SSn.SSnm};
+	</Template>
+	<Property>
+		<Group id="grpPortOut" columnCount="2">
+			<Option id="portPage" name="Specify page" deviceInfo="portPage" controlType="Label_Combox"/>
+			<Option id="portChannel" name="Specify channel" deviceInfo="portChannel" controlType="Label_Combox"/>
+			<Option id="outValue" name="value" controlType="Label_Combox" defaultSelection="Set">
+				<StaticItem id="Set" name="1"/>
+				<StaticItem id="Clear" name="0"/>
+			</Option>
+		</Group>
+	</Property>
+</Block>
