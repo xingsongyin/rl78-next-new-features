@@ -34,7 +34,7 @@ stand alone SC:  C:\Users\<name>\.eclipse\com.renesas.smc.rcp.rl78.product_downl
 ### Related Links
 SMS/ELCL data Releases :  https://github.com/xingsongyin/rl78-next-new-features/releases
 
-SMS/ELCL data content specification : https://renesas.github.io/fsp
+SMS/ELCL data content specification : https://github.com/xingsongyin/rl78-next-new-features/blob/master/DOCs/SMS%20tool%20external%20file%20specification.html
 
 RL78 Product Information: www.renesas.com/rl78
 
