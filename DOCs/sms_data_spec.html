@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SMS_tool_external_file_specification</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p><strong>Content</strong></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Introd"><span class="underline">1. Introduction</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Overvi"><span class="underline">1.1.  Overview</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-Scopeo"><span class="underline">1.2. Scope of this document</span></a></p></li>
+</ul></li>
+<li><p><a href="#SMStoolexternalfilespecification-Blocke"><span class="underline">2. Block element file specification</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Genera"><span class="underline">2.1. General structure of bock element XML file</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-rootel"><span class="underline">2.2. root element - Block</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-Proper"><span class="underline">2.3. Property element</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Groupe"><span class="underline">2.3.1. Group element</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-Option"><span class="underline">2.3.2. Option element</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-static"><span class="underline">2.3.2.1. staticItem element</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-dynami"><span class="underline">2.3.2.2. dynamicItem element</span></a></p></li>
+</ul></li>
+</ul></li>
+<li><p><a href="#SMStoolexternalfilespecification-Templa"><span class="underline">2.4. Template element</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-GRrequ"><span class="underline">2.4.1. GRrequester element</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Reques"><span class="underline">2.4.1.1. RequesterItem element</span></a></p></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><a href="#SMStoolexternalfilespecification-XMLVal"><span class="underline">3. XML Validation (How to check syntax?)</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-Append"><span class="underline">4. Appendix</span></a></p>
+<ul>
+<li><p><a href="#SMStoolexternalfilespecification-Sample"><span class="underline">4.1. Sample code</span></a></p></li>
+<li><p><a href="#SMStoolexternalfilespecification-Schema"><span class="underline">4.2. Schema file</span></a></p></li>
+</ul></li>
+</ul>
+<h1 id="introduction">1. Introduction</h1>
+<p>Smart Configuraotr SMS tool used data driven method for implementing the program extension and upgrade.</p>
+<p>The external file is XML format.</p>
+<p>The external file consist of :</p>
+<p>  - Device information database including the device register/bit, peripheral channel and SMS trigger info etc.</p>
+<p>  - <strong>the SMS tool block element</strong></p>
+<p>  - the SMS samples</p>
+<p>This document mainly describes the specification of the external XML file for <strong>SMS tool block element</strong>.</p>
+<h2 id="overview">1.1.  Overview</h2>
+<p>The external XML file for the SMS tool block element, which describes the Drag&amp;Drop block’s property setting GUI and the corresponding code template.</p>
+<p>The XML include element:</p>
+<ul>
+<li><p>Property: Block property setting UI</p></li>
+<li><p>Template: The code template for block code generation</p></li>
+</ul>
+<p>           - GRrequestor: Defined all necessary GR requestor elements using for block code template</p>
+<p><embed src="/media/image1.tmp" style="width:4.9in;height:2.4in" /></p>
+<p>Figure 1: The SMS Tool external XML Data Driven Method overview</p>
+<h2 id="scope-of-this-document">1.2. Scope of this document</h2>
+<p>The table illustrates the scope of this document.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Plugin’s version</th>
+<th>Smart Configurator for RL78 v1.0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>applicable version of e2studio</td>
+<td>e2studio V.8.x (RL78), 2021-xx onwards　</td>
+</tr>
+<tr class="even">
+<td>target micro</td>
+<td>Renesas RL78/Next devices</td>
+</tr>
+</tbody>
+</table>
+<h1 id="block-element-file-specification">2. Block element file specification</h1>
+<h2 id="general-structure-of-bock-element-xml-file">2.1. General structure of bock element XML file</h2>
+<table>
+<thead>
+<tr class="header">
+<th>&lt;Block&gt;[1..1]</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>&lt;Property&gt;[0..1]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>&lt;Group&gt;[1..n]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;Option&gt;[1..n]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;Group&gt;[0..n]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;Option&gt;[1..n]</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>&lt;Template&gt;[1..1]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>&lt;GRrequestor&gt;[0..n]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;item&gt;[1..n]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&lt;&gt;: Element                   [ ]: Occurrence</p>
+<h2 id="root-element---block">2.2. root element - Block</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>type</td>
+<td><p>Specify the block element type, only 4 enumerated types are allowed. </p>
+<p><embed src="/media/image2.tmp" style="width:3.5in;height:3in" /></p></td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>id</td>
+<td>Indicate the block element identifier.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>name</td>
+<td>Indicate  the block display name showed on category panal in SMS tool GUI.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>lable</td>
+<td>Indicate the label name showed on block.</td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="odd">
+<td>image</td>
+<td>Indicate the block element icon showed in category panel.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>category</td>
+<td>Indicate the block element category defined in category.xml file.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="even">
+<td>Property</td>
+<td><p>Describe the block property setting UI including the UI controls mutex relationship.</p>
+<p>See Property element for details.</p></td>
+<td>-</td>
+<td>0..1</td>
+</tr>
+<tr class="odd">
+<td>Template</td>
+<td><p>Define the block code template and GR requester items. </p>
+<p>See Template element for details.</p>
+<p>Note: The Code template syntax for SMS tool is followed by the Smart Configurator CG component used code template rule and syntax which defined and located in <a href="https://jira.renesas.eu/confluence/display/IDE/CG+Component+Developers+Manual#CGComponentDevelopersManual-6TemplateChapter6"><span class="underline">confluence page Smart Configurator developers manual.</span></a></p></td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<p><strong>Root element</strong></p>
+<p>&lt;Block type="process" id="SPIMasterReceive" image="Icons/Icon_Process.png" name="SPI Master Receive" label="SPI Master Receive" category="spiOperation"&gt;</p>
+<p>&lt;Template&gt;</p>
+<p>......</p>
+<p>&lt;/Template&gt;</p>
+<p>&lt;Property&gt;</p>
+<p>......</p>
+<p>&lt;/Property&gt;</p>
+<p>&lt;/Block&gt;</p>
+<h2 id="property-element">2.3. Property element</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="odd">
+<td>Group</td>
+<td>Indicate the block property UI setting group. See Group element for details.</td>
+<td>-</td>
+<td>1..n</td>
+</tr>
+</tbody>
+</table>
+<h3 id="group-element">2.3.1. Group element</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Define the group identifier.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>columnCount</td>
+<td>Specify the column count for the windows controls in current group.</td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="odd">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="even">
+<td>Option</td>
+<td>Define the GUI setting items in group.</td>
+<td>-</td>
+<td>1..n</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-element">2.3.2. Option element</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Define the option identifier.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Indicate the display name showing in UI for RadioButton and CheckBox.</td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="odd">
+<td>defaultSelection</td>
+<td>Specify the default selection at child staticItem element exist case.</td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="even">
+<td>controlType</td>
+<td><p>Specify the windows control type showing in UI.</p>
+<p>The control type enumerated :</p>
+<p><embed src="/media/image3.tmp" style="width:4.1in;height:1.8in" /></p></td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>dataSource</td>
+<td><p>Specify the data source for the ComboBox and Label_Combox.</p>
+<p>Only 2 enumerated types are allowed.</p>
+<p>- dataType.<em>variable</em> : The combo items are variable type defined in SMS tool Data Management.</p>
+<p>- dataType.<em>array</em> : The combo items are array type defined in SMS tool Data Management.</p></td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="even">
+<td>enable</td>
+<td><p>Define the enable condition for this Option corresponding windows control.</p>
+<p>The enable condition expression: optionId.xxx {$/|/! optionId.yyy}</p>
+<p>See the enable condition definition at below for the details.</p></td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="odd">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="even">
+<td>staticItem</td>
+<td><p>Define the static items for the ComboBox and Label_Combox.</p>
+<p>See staticItem element for details.</p></td>
+<td>-</td>
+<td>0..n</td>
+</tr>
+<tr class="odd">
+<td>dynamicItem</td>
+<td><p>Define the dynamic item for the TextBox and Label_TextBox.</p>
+<p>See dynamicItem element for details.</p></td>
+<td>-</td>
+<td>1..1</td>
+</tr>
+</tbody>
+</table>
+<p>The enable condition definition:</p>
+<table>
+<thead>
+<tr class="header">
+<th>enable condition</th>
+<th>Description</th>
+<th>Examples</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>optionId.xxx</td>
+<td>OptionId.checked</td>
+<td><p>This is applied for the RadioButtion or CheckBox.</p>
+<p>Returns true when corresponding windows control checked in property UI.</p></td>
+<td>rdbSourceVariabe.checked</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>OptionId.unchecked</td>
+<td><p>This is applied for the RadioButtion or CheckBox.</p>
+<p>Returns true when corresponding windows control unchecked in property UI.</p></td>
+<td>rdbSourceVariabe.unchecked</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>OptionId.subOptionId</td>
+<td><p>This pattern is applied for the ComboBox.</p>
+<p>Returns true when the indicated ComboBox item selected in UI.</p></td>
+<td>cmbSpiSource.csi10</td>
+</tr>
+<tr class="even">
+<td>Condition</td>
+<td>$ </td>
+<td>And condition.</td>
+<td>rdbSourceVariabe.checked $ rdbSourceFix.checked</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>|</td>
+<td>Or condition.</td>
+<td>rdbSourceVariabe.checked | rdbSourceFix.checked</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>!</td>
+<td>Not condition.</td>
+<td>rdbSourceVariabe.checked ! rdbSourceFix.checked</td>
+</tr>
+</tbody>
+</table>
+<p>Example for Option element:</p>
+<p>&lt;option id="rdoVariableTarget" controlType="RadioButton" name="Variable" defaultSelection="checked"/&gt;</p>
+<p>&lt;option id="cmbVariableTarget" controlType="Combox" dataSource="dataType.variable" enable="rdoVariableDst.checked"/&gt;</p>
+<p>&lt;option id="rdbBufferTarget" controlType="RadioButton" name="Array" defaultSelection="unchecked"/&gt;</p>
+<p>&lt;option id="cmbBufferTarget" controlType="Combox" dataSource="dataType.array" enable="rdoBufferTarget.checked"/&gt;</p>
+<h4 id="staticitem-element">2.3.2.1. staticItem element</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Define the static item identifier of ComboBox.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Indicate the static item display in UI.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>tag_xxx</td>
+<td>Define the tag which used to replace GRRequester item's <a href="#SMStoolexternalfilespecification-_TocRe"><span class="underline">source attribute</span></a> [#xxx] part. </td>
+<td>xs:string</td>
+<td>0..1</td>
+</tr>
+<tr class="even">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dynamicitem-element">2.3.2.2. dynamicItem element</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Define the static item identifier of ComboBox.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Indicate the static item display in UI.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>defaultValue</td>
+<td>Specify the default input value in TextBox.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="even">
+<td>range</td>
+<td>Define the TextBox input value range.</td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>Element</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="template-element">2.4. Template element</h2>
+<p>The template element is defined the code template and the GR requestor information.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>Element Name</td>
+<td>Description</td>
+<td>Type</td>
+<td>Occurrence</td>
+</tr>
+<tr class="odd">
+<td>GRrequester</td>
+<td>Define the GR requestor items.</td>
+<td>xs:string</td>
+<td>0..*</td>
+</tr>
+</tbody>
+</table>
+<h3 id="grrequester-element">2.4.1. GRrequester element</h3>
+<p>The GRrequestor define the items which need allocate GR in sequencer.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Element Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RequesterItem</td>
+<td><p>Define the GR requestor items.</p>
+<p>See RequesterItem element for details.</p></td>
+<td>xs:string</td>
+<td>1..*</td>
+</tr>
+</tbody>
+</table>
+<h4 id="requesteritem-element">2.4.1.1. RequesterItem element</h4>
+<p>The GRrequestor define the items which need allocate GR in sequencer.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Define the GR requestor item id.</td>
+<td>xs:string</td>
+<td>1..*</td>
+</tr>
+<tr class="even">
+<td>type</td>
+<td><p>The GR requestor item type.</p>
+<p>Only 5 enumerated types are allowed.</p>
+<p>-       const</p>
+<p>-       var</p>
+<p>-       reg</p>
+<p>-       regbit</p>
+<p>-       temp</p></td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+<tr class="odd">
+<td>source</td>
+<td><p>Define the source of requester item.</p>
+<p>The requester item used to make replacement in code template marked with ${xxx}.</p>
+<p>e.g. @source = "SIO[#mn]"  </p></td>
+<td>xs:string</td>
+<td>1..1</td>
+</tr>
+</tbody>
+</table>
+<p><embed src="/media/image4.tmp" style="width:4.9in;height:4.3in" /></p>
+<p>Figure 2. The relationship for the attribute staticItem-&gt;tag_mm, requesterItem-&gt;source and ${} in code template</p>
+<h1 id="xml-validation-how-to-check-syntax">3. XML Validation (How to check syntax?)</h1>
+<p>The block element schema file checks the syntax of the block element xml file to ensure it is readable by the SMS tool and that all necessary attributes and nodes are present.</p>
+<p>It does not check if conflicts will work, so some combination testing by the SMS block developer is required.</p>
+<p>The schema file “block_schema.xsd” should be included with this document.</p>
+<p><embed src="/media/image5.tmp" style="width:4.9in;height:2.2in" /></p>
+<p>Figure 2: Proposed development flow of block element file creation.</p>
+<p>To enable the schema check, the follow line should be added at the beginning of the xml file.</p>
+<p>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</p>
+<p>&lt;module xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="2.0" xs:noNamespaceSchemaLocation="block_schema.xsd"&gt;</p>
+<p>...</p>
+<p><embed src="/media/image6.tmp" style="width:4.9in;height:1.4in" /></p>
+<p>Figure 3: Validate the XML content according to the schema. In the above figure, Notepad++ is used for schema validation.</p>
+<h1 id="appendix">4. Appendix</h1>
+<h2 id="sample-code">4.1. Sample code</h2>
+<p>Samples of block element files are as attached. Use any XML editor to read these files.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><strong><span class="underline">Sample1: &lt;SPI Master Receive&gt; block element file</span></strong></p>
+<p>This sample is process block type.</p></td>
+<td><a href="file:///F:\confluence\download\attachments\76809307\SPI_MasterReceive.xml%3fversion=2&amp;modificationDate=1585476899310&amp;api=v2"><span class="underline">SPI_MasterReceive.xml</span></a></td>
+</tr>
+<tr class="even">
+<td><p><strong><span class="underline">Sample2: &lt;Compare&amp;Branch&gt; block element file</span></strong></p>
+<p>This sample is condition block type.</p></td>
+<td><a href="file:///F:\confluence\download\attachments\76809307\Branch_CompareBranch.xml%3fversion=2&amp;modificationDate=1585476881024&amp;api=v2"><span class="underline">Branch_CompareBranch.xml</span></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="schema-file">4.2. Schema file</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>The schema file used by SMS tool for block element file validation is as attached.</p>
+<p>This file can be used in any XML editor for syntax check.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Review Statistics For this Document</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>InlineComments</strong></td>
+<td><strong>Total=0</strong></td>
+<td><strong>Resolved=0</strong></td>
+<td><strong>Open=0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Add Review Time and Reviewers</strong></p>
+<p>窗体顶端</p>
+<table>
+<thead>
+<tr class="header">
+<th><em><strong>Page Review Control Board</strong></em></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><table>
+<tbody>
+<tr class="odd">
+<td><table>
+<tbody>
+<tr class="odd">
+<td>#Reviewers</td>
+</tr>
+</tbody>
+</table></td>
+<td><table>
+<thead>
+<tr class="header">
+<th><table>
+<tbody>
+<tr class="odd">
+<td>Start</td>
+<td>End</td>
+</tr>
+</tbody>
+</table></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Review Action Type required</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>Execute selected Review Action</td>
+</tr>
+</tbody>
+</table>
+<p>窗体底端</p>
+<p><strong>Page InlineComments - Overview </strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>#</strong></td>
+<td><strong>State</strong></td>
+<td><strong>Body-Text</strong></td>
+<td><strong>SCC</strong></td>
+<td><strong>Ver</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>CR-Date</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend:<br />
+State: Calculated State, BodyText: Comment-Text, SCC: Sub-Comment-Count,<br />
+Ver: The Page Version (timeintervall) this comment resides in</strong></p>
+</body>
+</html>
